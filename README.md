@@ -2,6 +2,12 @@
 
 A basic URL shortener that takes a URL, consistently hashes it and stores it in a sharded database using hash-ring (Chooses a DB connection from a pool based on the hashed URL). 
 
+## HTTP Endpoints:
+
+Returns JSON response
+* **`POST`** : http://localhost:3000/?url=:url  (url = url to shorten)
+* **`GET`** : http://localhost:3000/:urlId (urlId = shortened URL)
+
 ## Requirements:
 * docker >= 17.12.0+
 * docker-compose
