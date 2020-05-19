@@ -50,6 +50,7 @@ app.get('/:urlId', async (req, res) => {
     const server = hr.get(urlId);
     const result = await clients[server].query("SELECT * FROM URL_TABLE WHERE URL_ID = $1", [urlId]);
     if (result.rowCount > 0) {
+        res.status(200);
         res.send({
             "hash": urlId,
             "URL" : result.rows[0].url,
@@ -73,7 +74,7 @@ app.post("/", async (req, res) => {
     const server = hr.get(urlID);
 
     await clients[server].query("INSERT INTO URL_TABLE (URL, URL_ID) VALUES ($1, $2)", [url, urlID]);
-
+    res.status(200);
     res.send({
         "hash": urlID,
         "URL" : url,
